@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500" prefWidth="700" style="-fx-background-color: #2e4e5e;-fx-background-radius: 10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.OdemeGecmisiController">
+
+    <Label layoutX="20" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Ödeme Geçmişi" />
+
+    <TableView fx:id="odemeTablosu" layoutX="20" layoutY="60" prefHeight="350" prefWidth="660">
+        <columns>
+            <TableColumn fx:id="colKullanici" prefWidth="150" text="Kullanıcı" />
+            <TableColumn fx:id="colEv" prefWidth="150" text="Ev Adı" />
+            <TableColumn fx:id="colTutar" prefWidth="100" text="Tutar (₺)" />
+            <TableColumn fx:id="colTarih" prefWidth="150" text="Tarih" />
+        </columns>
+    </TableView>
+
+    <Label fx:id="labelToplam" layoutX="20" layoutY="430" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Toplam Ödeme: ₺0.00" />
+
+    <Button layoutX="606.0" layoutY="456.0" onAction="#handleBack" prefWidth="80" style="-fx-background-color: #ffffff; -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
+</AnchorPane>

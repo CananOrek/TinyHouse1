@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500" prefWidth="700"
+            style="-fx-background-color: #2e4e5e; -fx-background-radius: 10"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo.IlanYonetimiController">
+
+    <Label layoutX="20" layoutY="20" text="İlan Yönetimi"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+    <TableView fx:id="ilanTablosu" layoutX="20" layoutY="60" prefWidth="660" prefHeight="350">
+        <columns>
+            <TableColumn fx:id="colEvSahibi" text="Ev Sahibi" prefWidth="120" />
+            <TableColumn fx:id="colEvAdi" text="Ev Adı" prefWidth="120" />
+            <TableColumn fx:id="colKonum" text="Konum" prefWidth="120" />
+            <TableColumn fx:id="colFiyat" text="Fiyat (₺)" prefWidth="100" />
+            <TableColumn fx:id="colTarih" text="Tarih" prefWidth="150" />
+        </columns>
+    </TableView>
+
+    <Button fx:id="btnSil" layoutX="20" layoutY="430" prefWidth="200" text="Seçili İlanı Sil"
+            style="-fx-background-color: #d9534f; -fx-text-fill: white;" onAction="#onIlanSil" />
+
+    <Button fx:id="btnDuzenle" layoutX="230" layoutY="430" prefWidth="200" text="Durumu Güncelle"
+            style="-fx-background-color: #5bc0de; -fx-text-fill: white;" onAction="#onIlanGuncelle" />
+    <Button layoutX="606.0" layoutY="456.0" onAction="#handleBack"
+            prefWidth="80" style="-fx-background-color: #ffffff;
+     -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
+
+</AnchorPane>
