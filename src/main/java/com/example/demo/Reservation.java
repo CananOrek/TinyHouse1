@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import javafx.fxml.FXML;
+
 import java.time.LocalDate;
 
 public class Reservation {
@@ -41,7 +43,7 @@ public class Reservation {
     // 6 parametreli constructor (Kiracı için)
     public Reservation(int reservationID, String houseName,
                        LocalDate checkInDate, LocalDate checkOutDate,
-                       String status, double totalAmount) {
+                       String status,double totalAmount) {
         this.reservationID = reservationID;
         this.houseName = houseName;
         this.checkInDate = checkInDate;
@@ -49,6 +51,7 @@ public class Reservation {
         this.status = status;
         this.totalAmount = totalAmount;
     }
+
 
     // Getter'lar
     public int getReservationID() {
@@ -77,6 +80,9 @@ public class Reservation {
 
     public String getPaymentStatus() {
         return paymentStatus;
+    }
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus=paymentStatus;
     }
 
     public boolean isConfirmed() {
