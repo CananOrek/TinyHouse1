@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.KiraciController"
+            prefWidth="400" prefHeight="300">
+    <children>
+        <Label layoutX="100" layoutY="50" text="Kiracı Paneline Hoş Geldiniz!" style="-fx-font-size: 18px;"/>
+
+        <TableView fx:id="houseTable" layoutX="20" layoutY="20" prefWidth="600" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="colName" text="Ad" prefWidth="100"/>
+                <TableColumn fx:id="colLocation" text="Konum" prefWidth="150"/>
+                <TableColumn fx:id="colPrice" text="Gecelik Ücret" prefWidth="100"/>
+                <TableColumn fx:id="colCapacity" text="Kapasite" prefWidth="100"/>
+                <TableColumn fx:id="colStartDate" text="Başlangıç"/>
+                <TableColumn fx:id="colEndDate" text="Bitiş"/>
+            </columns>
+        </TableView>
+
+        <Button text="Çıkış Yap" layoutX="160" layoutY="200" onAction="#handleLogout"/>
+        <Button fx:id="rezervasyonYapButonu" layoutX="20" layoutY="340" text="Rezervasyon Yap" onAction="#handleReservation"/>
+        <Button fx:id="btnMyReservations" layoutX="200" layoutY="350" mnemonicParsing="false" onAction="#handleMyReservations" text="Rezervasyonlarım" />
+    </children>
+</AnchorPane>

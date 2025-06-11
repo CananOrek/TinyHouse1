@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.EvSahibiGelirRaporuController"
+            prefWidth="700" prefHeight="400">
+    <children>
+        <TableView fx:id="gelirTablosu" layoutX="20" layoutY="20" prefWidth="660" prefHeight="320">
+            <columns>
+                <TableColumn fx:id="colEvAdi" text="Ev Adı" prefWidth="200"/>
+                <TableColumn fx:id="colTutar" text="Tutar (₺)" prefWidth="150"/>
+                <TableColumn fx:id="colTarih" text="Tarih" prefWidth="200"/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="toplamGelirLabel" layoutX="500" layoutY="350" text="Toplam Gelir: 0 TL" />
+
+        <Button layoutX="20" layoutY="350" text="Geri Dön" onAction="#geriDon"/>
+    </children>
+</AnchorPane>

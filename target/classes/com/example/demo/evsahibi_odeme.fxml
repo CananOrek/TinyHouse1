@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.EvSahibiOdemeController"
+            prefWidth="700" prefHeight="400">
+
+    <children>
+        <TableView fx:id="paymentTable" layoutX="20" layoutY="20" prefWidth="660" prefHeight="320">
+            <columns>
+                <TableColumn fx:id="colHouse" text="Ev Adı" prefWidth="150"/>
+                <TableColumn fx:id="colTenant" text="Kiracı" prefWidth="150"/>
+                <TableColumn fx:id="colAmount" text="Tutar" prefWidth="100"/>
+                <TableColumn fx:id="colStatus" text="Durum" prefWidth="100"/>
+                <TableColumn fx:id="colPaymentDate" text="Tarih" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <Button layoutX="20" layoutY="350" text="Geri Dön" onAction="#handleBack"/>
+    </children>
+</AnchorPane>

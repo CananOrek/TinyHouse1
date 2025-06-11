@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.AdminUserController" prefWidth="700" prefHeight="400">
+    <children>
+        <TableView fx:id="userTable" layoutX="20" layoutY="20" prefWidth="660" prefHeight="280">
+            <columns>
+                <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colName" text="Ad Soyad" prefWidth="150"/>
+                <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
+                <TableColumn fx:id="colRole" text="Rol" prefWidth="100"/>
+                <TableColumn fx:id="colActive" text="Aktif mi?" prefWidth="80"/>
+            </columns>
+        </TableView>
+        <Button text="Pasif Yap" layoutX="150" layoutY="320" onAction="#handleDeactivateUser"/>
+        <Button text="Sil" layoutX="270" layoutY="320" onAction="#handleDeleteUser"/>
+        <Button text="Aktif Yap" layoutX="220" layoutY="370" onAction="#handleActivateUser"/>
+
+    </children>
+</AnchorPane>

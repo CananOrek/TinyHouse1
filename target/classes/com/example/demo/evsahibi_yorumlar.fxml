@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.EvSahibiCommentsController"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <TableView fx:id="commentTable" layoutX="20" layoutY="20" prefWidth="560" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="colHouse" text="Ev Adı" prefWidth="120"/>
+                <TableColumn fx:id="colTenant" text="Kiracı" prefWidth="120"/>
+                <TableColumn fx:id="colComment" text="Yorum" prefWidth="200"/>
+                <TableColumn fx:id="colRating" text="Puan" prefWidth="100"/>
+                <TableColumn fx:id="colReply" text="Cevap" prefWidth="150"/>
+            </columns>
+        </TableView>
+        <Button layoutX="20" layoutY="380" text="Yorumu Cevapla" onAction="#handleReply"/>
+    </children>
+</AnchorPane>

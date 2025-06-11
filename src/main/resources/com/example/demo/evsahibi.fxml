@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EvSahibiController">
+    <children>
+
+        <Label layoutX="200" layoutY="20" style="-fx-font-size: 20px;" text="Ev Listesi" />
+
+        <TableView fx:id="houseTable" layoutX="2.0" layoutY="60" prefHeight="250" prefWidth="594.0">
+            <columns>
+                <TableColumn fx:id="colName" prefWidth="100" text="Ad" />
+                <TableColumn fx:id="colLocation" prefWidth="150" text="Konum" />
+                <TableColumn fx:id="colPrice" prefWidth="100" text="Gecelik Ücret" />
+                <TableColumn fx:id="colCapacity" prefWidth="100" text="Kapasite" />
+                <TableColumn fx:id="colStartDate" text="Başlangıç" />
+                <TableColumn fx:id="colEndDate" text="Bitiş" />
+                <TableColumn fx:id="colIsActive" text="Aktif Mi?" />
+            </columns>
+        </TableView>
+
+        <Button layoutX="172.0" layoutY="330.0" onAction="#handleAddHouse" text="Yeni Ev Ekle" />
+        <Button layoutX="120" layoutY="330" onAction="#handleDeleteHouse" text="Sil" />
+        <Button layoutX="268.0" layoutY="330.0" onAction="#handleEditHouse" text="Güncelle" />
+        <Button layoutX="458.0" layoutY="330.0" onAction="#handleUpdateAvailability" text="Durumu Güncelle" />
+        <Button fx:id="rezervasyonButonu" layoutX="348.0" layoutY="330.0" onAction="#goToReservations" text="Rezervasyonlar" />
+        <Button fx:id="yorumlarButonu" layoutX="179.0" layoutY="368.0" onAction="#goToComments" text="Yorumlar" />
+        <Button fx:id="btnRezervasyon" layoutX="348.0" layoutY="368.0" onAction="#handleReservations" text="Rezervasyonlar" />
+        <Button layoutX="1.0" layoutY="330.0" onAction="#handlePayments" text="Ödeme Bilgileri" />
+        <Button fx:id="gelirRaporuButton" layoutX="20" layoutY="240" text="Gelir Raporu" onAction="#gelirRaporunaGit"/>
+
+    </children>
+</AnchorPane>

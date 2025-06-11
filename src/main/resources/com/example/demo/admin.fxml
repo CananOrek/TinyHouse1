@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.AdminController"
+            prefWidth="400" prefHeight="300">
+    <children>
+        <Label layoutX="120" layoutY="40" text="Admin Paneline Hoş Geldiniz!" style="-fx-font-size: 18px;"/>
+        <Button text="Çıkış Yap" layoutX="160" layoutY="200" onAction="#handleLogout"/>
+        <Button text="Kullanıcı Yönetimi" layoutX="140" layoutY="150" onAction="#goToUserManagement"/>
+    </children>
+</AnchorPane>

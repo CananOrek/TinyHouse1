@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.KiraciRezervasyonlarimController">
+    <children>
+        <TableView fx:id="reservationTable" layoutX="20" layoutY="20" prefWidth="600" prefHeight="400">
+            <columns>
+                <TableColumn text="ID" fx:id="colId" />
+                <TableColumn text="Ev" fx:id="colHouseName" />
+                <TableColumn text="Giriş" fx:id="colCheckIn" />
+                <TableColumn text="Çıkış" fx:id="colCheckOut" />
+                <TableColumn text="Durum" fx:id="colStatus" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.KiraciRezervasyonController"
+            prefWidth="400" prefHeight="250">
+
+    <children>
+        <Label layoutX="30" layoutY="30" text="Giriş Tarihi:"/>
+        <DatePicker fx:id="checkInDate" layoutX="120" layoutY="25"/>
+
+        <Label layoutX="30" layoutY="80" text="Çıkış Tarihi:"/>
+        <DatePicker fx:id="checkOutDate" layoutX="120" layoutY="75"/>
+
+        <Button layoutX="120" layoutY="130" text="Rezervasyon Yap" onAction="#handleMakeReservation"/>
+    </children>
+</AnchorPane>
