@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.EvSahibiReservationController" prefWidth="700" prefHeight="400">
-    <children>
-        <TableView fx:id="reservationTable" layoutX="25" layoutY="25" prefWidth="650" prefHeight="300">
-            <columns>
-                <TableColumn fx:id="colHouse" text="Ev"/>
-                <TableColumn fx:id="colTenant" text="Kiracı"/>
-                <TableColumn fx:id="colCheckIn" text="Giriş"/>
-                <TableColumn fx:id="colCheckOut" text="Çıkış"/>
-                <TableColumn fx:id="colStatus" text="Durum"/>
-            </columns>
-        </TableView>
-        <Button layoutX="180" layoutY="340" text="Kabul Et" onAction="#handleApprove"/>
-        <Button layoutX="380" layoutY="340" text="Reddet" onAction="#handleReject"/>
-    </children>
+<AnchorPane prefHeight="500" prefWidth="700"
+            style="-fx-background-color:#2e4e5e;-fx-background-radius: 10"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo.ReservationController">
+
+    <Label layoutX="20" layoutY="20" text="Rezervasyon Yönetimi"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+    <TableView fx:id="rezervasyonTablosu" layoutX="20" layoutY="60" prefWidth="660" prefHeight="350">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="120" />
+            <TableColumn fx:id="colTenantName" text="Kullanıcı" prefWidth="120" />
+            <TableColumn fx:id="colHouseName" text="Ev Adı" prefWidth="150" />
+            <TableColumn fx:id="colcheckInDate" text="Başlangıç" prefWidth="100" />
+            <TableColumn fx:id="colcheckOutDate" text="Bitiş" prefWidth="100" />
+            <TableColumn fx:id="colstatus" text="Durumu" prefWidth="120" />
+            <TableColumn fx:id="colPayment" text="Ödeme Durumu" prefWidth="120" />
+            <TableColumn fx:id="colConfirmed" text="Onay" prefWidth="120" />
+        </columns>
+    </TableView>
+
+    <Button text="Seçili Rezervasyonu İptal Et" fx:id="btnIptal"
+            layoutX="20" layoutY="430" prefWidth="300"
+            style="-fx-background-color: #d9534f; -fx-text-fill: white;"
+            onAction="#onIptalEt" />
+    <Button layoutX="606.0" layoutY="456.0" onAction="#handleBack"
+            prefWidth="80" style="-fx-background-color: #ffffff;
+     -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
 </AnchorPane>
