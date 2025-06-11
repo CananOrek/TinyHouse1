@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.AdminUserController" prefWidth="700" prefHeight="400">
-    <children>
-        <TableView fx:id="userTable" layoutX="20" layoutY="20" prefWidth="660" prefHeight="280">
-            <columns>
-                <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="colName" text="Ad Soyad" prefWidth="150"/>
-                <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
-                <TableColumn fx:id="colRole" text="Rol" prefWidth="100"/>
-                <TableColumn fx:id="colActive" text="Aktif mi?" prefWidth="80"/>
-            </columns>
-        </TableView>
-        <Button text="Pasif Yap" layoutX="150" layoutY="320" onAction="#handleDeactivateUser"/>
-        <Button text="Sil" layoutX="270" layoutY="320" onAction="#handleDeleteUser"/>
-        <Button text="Aktif Yap" layoutX="220" layoutY="370" onAction="#handleActivateUser"/>
 
-    </children>
+<AnchorPane prefWidth="700" prefHeight="500"
+            style="-fx-background-color: #2e4e5e;-fx-background-radius: 10"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo.AdminUserController">
+
+    <Label layoutX="20" layoutY="20" text="Kullanıcı Yönetimi"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+    <TableView fx:id="userTable" layoutX="20" layoutY="100" prefWidth="660" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="colID" text="ID" prefWidth="100"/>
+            <TableColumn fx:id="colName" text="Ad" prefWidth="100"/>
+            <TableColumn fx:id="colEmail" text="E-posta" prefWidth="200"/>
+            <TableColumn fx:id="colRole" text="Rol" prefWidth="100"/>
+            <TableColumn fx:id="colActive" text="Durum" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+
+    <HBox spacing="10" layoutX="20" layoutY="420">
+        <Button text="Aktif Yap" fx:id="btnEkle" onAction="#handleActivateUser"
+                style="-fx-background-color: #009565; -fx-text-fill: white;" />
+        <Button text="Pasif Yap" fx:id="btnPasifYap" onAction="#handleDeactivateUser"
+                style="-fx-background-color: #f0ad4e; -fx-text-fill: white;" />
+        <Button layoutX="606.0" layoutY="456.0" onAction="#handleBack"
+                prefWidth="80" style="-fx-background-color: #ffffff;
+     -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
+    </HBox>
 </AnchorPane>
