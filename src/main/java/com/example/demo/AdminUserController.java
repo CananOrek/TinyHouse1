@@ -15,7 +15,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class AdminController {
+public class AdminUserController {
     @FXML
     private Label labelToplamKullanici;
 
