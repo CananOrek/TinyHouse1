@@ -27,7 +27,6 @@
         <Button layoutX="120" layoutY="330" onAction="#handleDeleteHouse" text="Sil" />
         <Button layoutX="268.0" layoutY="330.0" onAction="#handleEditHouse" text="Güncelle" />
         <Button layoutX="458.0" layoutY="330.0" onAction="#handleUpdateAvailability" text="Durumu Güncelle" />
-        <Button fx:id="rezervasyonButonu" layoutX="348.0" layoutY="330.0" onAction="#goToReservations" text="Rezervasyonlar" />
         <Button fx:id="yorumlarButonu" layoutX="179.0" layoutY="368.0" onAction="#goToComments" text="Yorumlar" />
         <Button fx:id="btnRezervasyon" layoutX="348.0" layoutY="368.0" onAction="#handleReservations" text="Rezervasyonlar" />
         <Button layoutX="1.0" layoutY="330.0" onAction="#handlePayments" text="Ödeme Bilgileri" />
