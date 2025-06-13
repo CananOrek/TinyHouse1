@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefWidth="700" prefHeight="500"
+            style="-fx-background-color:#2e4e5e;-fx-background-radius: 10"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo.EvSahibiIlanlarController">
+
+    <Label layoutX="20" layoutY="20" text="EvListesi"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+
+    <TableView fx:id="houseTable" layoutX="2.0" layoutY="60" prefHeight="250" prefWidth="594.0">
+        <columns>
+            <TableColumn fx:id="colName" prefWidth="100" text="Ad" />
+            <TableColumn fx:id="colLocation" prefWidth="150" text="Konum" />
+            <TableColumn fx:id="colPrice" prefWidth="100" text="Gecelik Ücret" />
+            <TableColumn fx:id="colCapacity" prefWidth="100" text="Kapasite" />
+            <TableColumn fx:id="colStartDate" text="Başlangıç" />
+            <TableColumn fx:id="colEndDate" text="Bitiş" />
+            <TableColumn fx:id="colIsActive" text="Aktif Mi?" />
+        </columns>
+    </TableView>
+
+
+    <HBox spacing="10" layoutX="20" layoutY="420">
+        <Button fx:id="btnEkle" text="Yeni İlan Ekle" onAction="#handleAddHouse"
+                style="-fx-background-color: #009565; -fx-text-fill: white;" />
+        <Button fx:id="btnSil" text="Sil" onAction="#handleDeleteHouse"
+                style="-fx-background-color: #d9534f; -fx-text-fill: white;" />
+        <Button fx:id="btnGuncelle" text="Düzenle" onAction="#handleEditHouse"
+                style="-fx-background-color: #5bc0de; -fx-text-fill: white;" />
+        <Button fx:id="btnDurumGuncelle" text="Durum Güncelle" onAction="#handleUpdateAvailability"
+                style="-fx-background-color: #FFA000; -fx-text-fill: white;" />
+        <Button layoutX="606.0" layoutY="456.0" onAction="#handleBack"
+                prefWidth="80" style="-fx-background-color: #ffffff;
+     -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
+    </HBox>
+</AnchorPane>
