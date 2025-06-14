@@ -1,9 +1,14 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.io.PipedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,6 +19,8 @@ public class KiraciOdemeController {
     @FXML private TextField txtReservationId;
     @FXML private TextField txtAmount;
     @FXML private ComboBox<String> cmbPaymentMethod;
+    @FXML private Label labelToplam;
+
 
     @FXML
     public void initialize() {
@@ -26,6 +33,8 @@ public class KiraciOdemeController {
         try {
             int reservationId = Integer.parseInt(txtReservationId.getText());
             double amount = Double.parseDouble(txtAmount.getText());
+            labelToplam.setText("Toplam Ödeme: ₺" + txtAmount.getText());
+
             String paymentMethod = cmbPaymentMethod.getValue();
 
             if (paymentMethod == null || paymentMethod.isEmpty()) {
@@ -55,6 +64,19 @@ public class KiraciOdemeController {
 
         } catch (NumberFormatException e) {
             showAlert("Hata", "Lütfen geçerli bir rezervasyon ID ve tutar girin.");
+        }
+    }
+    @FXML
+    private Button btnBack;
+    @FXML
+    private void handleBack() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) btnBack.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
