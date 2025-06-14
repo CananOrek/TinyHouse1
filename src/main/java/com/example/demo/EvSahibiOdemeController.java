@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -81,10 +82,11 @@ public class EvSahibiOdemeController {
     private void handleBack() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage) paymentTable.getScene().getWindow();
-            stage.setScene(new Scene(loader.load()));
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
-            showAlert("Ekran Hatası", "Geri dönüş ekranı yüklenemedi: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
