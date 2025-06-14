@@ -4,7 +4,16 @@ import com.example.demo.Comment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.scene.paint.Color;
+
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class KiraciYorumlarController {
@@ -58,4 +67,19 @@ public class KiraciYorumlarController {
             });
         }
     }
+    @FXML
+    private void handleBack() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.setFill(Color.TRANSPARENT);
+            Stage stage = (Stage) yorumTablosu.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.out.println("Ekran açılmadı");
+            e.printStackTrace();
+        }
+    }
+
+
 }
