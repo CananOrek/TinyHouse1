@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.KiraciRezervasyonlarimController">
-    <children>
-        <TableView fx:id="reservationTable" layoutX="20" layoutY="20" prefWidth="600" prefHeight="400">
+<AnchorPane prefHeight="500" prefWidth="700" style="-fx-background-color:#2e4e5e;-fx-background-radius: 10"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo.KiraciRezervasyonlarController">
+
+    <Label layoutX="20" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;" text="Rezervasyonlarım" />
+
+        <TableView fx:id="reservationTable" layoutX="20" layoutY="73.0"
+                   prefHeight="347.0" prefWidth="600" style="-fx-background-color: white">
             <columns>
-                <TableColumn text="ID" fx:id="colId" />
-                <TableColumn text="Ev" fx:id="colHouseName" />
-                <TableColumn text="Giriş" fx:id="colCheckIn" />
-                <TableColumn text="Çıkış" fx:id="colCheckOut" />
-                <TableColumn text="Durum" fx:id="colStatus" />
+                <TableColumn fx:id="colId" text="ID" />
+                <TableColumn fx:id="colHouseName" text="Ev" />
+                <TableColumn fx:id="colCheckIn" text="Giriş" />
+                <TableColumn fx:id="colCheckOut" text="Çıkış" />
+                <TableColumn fx:id="colStatus" text="Durum" />
+                <TableColumn fx:id="colAmount" text="Tutar" />
             </columns>
         </TableView>
-    </children>
+    <HBox layoutX="20" layoutY="430" spacing="10">
+        <Button fx:id="btnIptal" onAction="#handleCancelReservation"
+                style="-fx-background-color: #d9534f; -fx-text-fill: white;" text="Seçili Rezervasyonu İptal Et" />
+        <Button fx:id="btnBack" onAction="#handleBack"
+                style="-fx-background-color: #ffffff; -fx-text-fill: black;" text="Geri" />
+    </HBox>
 </AnchorPane>
