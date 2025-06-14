@@ -17,62 +17,135 @@ import java.time.LocalDate;
 public class KiraciController {
 
     @FXML private TableView<House> houseTable;
+    @FXML private TableColumn<House, Integer> colId;
     @FXML private TableColumn<House, String> colName;
     @FXML private TableColumn<House, String> colLocation;
     @FXML private TableColumn<House, Double> colPrice;
-    @FXML private TableColumn<House, Integer> colCapacity;
-    @FXML private TableColumn<House, LocalDate> colStartDate;
-    @FXML private TableColumn<House, LocalDate> colEndDate;
+    @FXML private TableColumn<House, Double> colAverageRating;
 
     private ObservableList<House> houseList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colCapacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
-        colStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-        colEndDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+        colAverageRating.setCellValueFactory(new PropertyValueFactory<>("averageRating"));
 
-        loadAvailableHouses();
+        loadPopularHouses();
     }
 
-    private void loadAvailableHouses() {
+    private void loadPopularHouses() {
         houseList.clear();
         try (Connection conn = Database.getConnection()) {
-            String sql = "SELECT * FROM Houses WHERE IsActive = 1";
+            String sql = """
+                SELECT H.HouseID, H.HouseName, H.Location, H.PricePerNight,
+                       dbo.fn_OrtalamaPuan(H.HouseID) AS AverageRating
+                FROM Houses H
+                WHERE H.IsActive = 1
+                ORDER BY AverageRating DESC
+                """;
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
+                int id = rs.getInt("HouseID");
                 String name = rs.getString("HouseName");
                 String location = rs.getString("Location");
                 double price = rs.getDouble("PricePerNight");
-                int capacity = rs.getInt("Capacity");
+                double avgRating = rs.getDouble("AverageRating");
 
-                LocalDate startDate = rs.getDate("StartDate") != null ? rs.getDate("StartDate").toLocalDate() : null;
-                LocalDate endDate = rs.getDate("EndDate") != null ? rs.getDate("EndDate").toLocalDate() : null;
-                boolean isActive = rs.getBoolean("IsActive");
+                // House sınıfında böyle bir constructor varsa (capacity, startDate, endDate olmadan):
+                House house = new House(id, name, location, price);
+                house.setAverageRating(avgRating); // averageRating alanını set et
 
-                int houseID = rs.getInt("HouseID"); // Eksik olan
+                houseList.add(house);
 
-                houseList.add(new House(houseID, name, location, price, capacity, startDate, endDate, isActive));            }
+                // Eğer ortalama puan 1 ise uyarı ver
+                if (avgRating == 1.0) {
+                    showWarning("Uyarı", "Ev '" + name + "' sadece 1 puan aldı! Lütfen kontrol edin.");
+                }
+            }
 
             houseTable.setItems(houseList);
+
         } catch (SQLException e) {
-            showAlert("Veri Hatası", e.getMessage());
+            showWarning("Veritabanı Hatası", e.getMessage());
         }
     }
 
-    private void showAlert(String title, String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showWarning(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
     }
+    @FXML
+    private Button btnRezervasyonlar;
+    @FXML
+    private void goToMyReservations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci_rezervasyonlarim.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) btnRezervasyonlar.getScene().getWindow(); // herhangi bir sahne elemanı yerine kullanılabilir
+            stage.setScene(scene);
+            stage.setTitle("Rezervasyonlar");
+        } catch (IOException e) {
+            // e.printStackTrace();
+            showWarning("Hata", "Ekran yüklenemedi: " + e.getMessage());
+        }
 
+    }
+    @FXML
+    private Button btnEvler;
+    @FXML
+    private void goToPopularHouses() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci_rezervasyon.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) btnEvler.getScene().getWindow(); // herhangi bir sahne elemanı yerine kullanılabilir
+            stage.setScene(scene);
+            stage.setTitle("Rezervasyonlar");
+        } catch (IOException e) {
+            // e.printStackTrace();
+            showWarning("Hata", "Ekran yüklenemedi: " + e.getMessage());
+        }
+
+    }
+    @FXML
+    private Button btnYorumlarim;
+    @FXML
+    private void goToMyComments() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KiraciYorumlarim.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) btnYorumlarim.getScene().getWindow(); // herhangi bir sahne elemanı yerine kullanılabilir
+            stage.setScene(scene);
+            stage.setTitle("Rezervasyonlar");
+        } catch (IOException e) {
+            // e.printStackTrace();
+            showWarning("Hata", "Ekran yüklenemedi: " + e.getMessage());
+        }
+
+    }
+    @FXML
+    private Button btnOdeme;
+    @FXML
+    private void goToPaymentHistory() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("KiraciOdemeGecmisi.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) btnOdeme.getScene().getWindow(); // herhangi bir sahne elemanı yerine kullanılabilir
+            stage.setScene(scene);
+            stage.setTitle("Rezervasyonlar");
+        } catch (IOException e) {
+            // e.printStackTrace();
+            showWarning("Hata", "Ekran yüklenemedi: " + e.getMessage());
+        }
+
+    }
     @FXML
     private void handleLogout() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -84,57 +157,7 @@ public class KiraciController {
         System.exit(0);
     }
 
-    @FXML
-    private void handleReservation() {
-        House selected = houseTable.getSelectionModel().getSelectedItem();
-        if (selected == null) {
-            showAlert("Uyarı", "Lütfen bir ev seçin.");
-            return;
-        }
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci_rezervasyon.fxml"));
-            Parent root = loader.load();
 
-            KiraciRezervasyonController controller = loader.getController();
-            controller.setHouse(selected);
 
-            Stage stage = new Stage();
-            stage.setTitle("Rezervasyon Yap");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            showAlert("Hata", "Rezervasyon ekranı açılamadı: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void goToMyReservations() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci_rezervasyonlar.fxml"));
-            Stage stage = (Stage) houseTable.getScene().getWindow();
-            stage.setScene(new Scene(loader.load()));
-        } catch (Exception e) {
-            showAlert("Ekran Hatası", e.getMessage());
-        }
-    }
-
-    @FXML
-    private Button btnMyReservations;
-
-    @FXML
-    private void handleMyReservations() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci_rezervasyonlarim.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Rezervasyonlarım");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            showAlert("Hata", "Rezervasyonlarım ekranı açılamadı: " + e.getMessage());
-        }
-    }
 }
