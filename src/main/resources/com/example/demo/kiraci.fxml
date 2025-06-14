@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.KiraciController"
-            prefWidth="400" prefHeight="300">
-    <children>
-        <Label layoutX="100" layoutY="50" text="Kiracı Paneline Hoş Geldiniz!" style="-fx-font-size: 18px;"/>
+<AnchorPane prefHeight="434.0" prefWidth="782.0" style="-fx-background-color: transparent;-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.KiraciController">
 
-        <TableView fx:id="houseTable" layoutX="20" layoutY="20" prefWidth="600" prefHeight="300">
-            <columns>
-                <TableColumn fx:id="colName" text="Ad" prefWidth="100"/>
-                <TableColumn fx:id="colLocation" text="Konum" prefWidth="150"/>
-                <TableColumn fx:id="colPrice" text="Gecelik Ücret" prefWidth="100"/>
-                <TableColumn fx:id="colCapacity" text="Kapasite" prefWidth="100"/>
-                <TableColumn fx:id="colStartDate" text="Başlangıç"/>
-                <TableColumn fx:id="colEndDate" text="Bitiş"/>
-            </columns>
-        </TableView>
+    <AnchorPane prefHeight="437.0" prefWidth="782.0" style="-fx-background-color:linear-gradient(to right, #00B0C7, #2e4e5e); -fx-background-radius: 10;
+                    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.5, 0, 2);">
+   
+       <VBox alignment="CENTER" layoutX="28.0" layoutY="35.0" prefHeight="366.0" prefWidth="275.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 30 20 20 20; -fx-border-radius: 10;           -fx-background-radius: 10;-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0.2, 0, 4);">
+   
+           <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2e4e5e;" text="👤  Kiracı Paneli " />
+   
+           <Button fx:id="btnEvler" onAction="#goToPopularHouses" prefWidth="200" style="-fx-background-color: #2e4e5e; -fx-text-fill: white;" text="Evleri Listele" />
+   
+           <Button fx:id="btnRezervasyonlar" onAction="#goToMyReservations" prefWidth="200" style="-fx-background-color: #2e4e5e; -fx-text-fill: white;" text="Rezervasyonlarım" />
+   
+           <Button fx:id="btnOdeme" onAction="#goToPaymentHistory" prefWidth="200" style="-fx-background-color: #2e4e5e; -fx-text-fill: white;" text="Ödeme Geçmişim" />
+   
+           <Button fx:id="btnYorumlarim" onAction="#goToMyComments" prefWidth="200" style="-fx-background-color: #2e4e5e; -fx-text-fill: white;" text="Yorumlarım" />
+           <Button fx:id="btnCikis" onAction="#handleLogout" prefWidth="200" style="-fx-background-color: #2e4e5e; -fx-text-fill: white;" text="Çıkış" />
+       </VBox>
 
-        <Button text="Çıkış Yap" layoutX="160" layoutY="200" onAction="#handleLogout"/>
-        <Button fx:id="rezervasyonYapButonu" layoutX="20" layoutY="340" text="Rezervasyon Yap" onAction="#handleReservation"/>
-        <Button fx:id="btnMyReservations" layoutX="200" layoutY="350" mnemonicParsing="false" onAction="#handleMyReservations" text="Rezervasyonlarım" />
-    </children>
+            <TableView fx:id="houseTable" layoutX="321.0" layoutY="122.0" prefHeight="228.0" prefWidth="454.0">
+             <columns>
+                 <TableColumn fx:id="colId" prefWidth="50" text="ID" />
+                 <TableColumn fx:id="colName" prefWidth="100.0" text="Ev Adı" />
+                 <TableColumn fx:id="colLocation" prefWidth="100.0" text="Konum" />
+                 <TableColumn fx:id="colPrice" prefWidth="100" text="Fiyat" />
+                 <TableColumn fx:id="colAverageRating" prefWidth="100" text="Puan" />
+             </columns>
+         </TableView>
+         <Label layoutX="321.0" layoutY="76.0" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 20;" text="Popüler Evler" />
+    </AnchorPane>
+
 </AnchorPane>
