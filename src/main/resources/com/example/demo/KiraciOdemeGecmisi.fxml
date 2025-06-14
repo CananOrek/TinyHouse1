@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="357.0" prefWidth="358.0" style="-fx-background-color: #2e4e5e; -fx-background-radius: 10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.KiraciOdemeController">
+
+    <VBox layoutX="20" layoutY="20" spacing="10">
+
+
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Ödeme" />
+
+        <Label fx:id="labelToplam" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Toplam Ödeme: ₺0.00" />
+
+
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Yeni Ödeme Ekle" />
+
+        <HBox spacing="10">
+            <Label style="-fx-text-fill: white;" text="Rezervasyon ID:" />
+            <TextField fx:id="txtReservationId" promptText="ID giriniz" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label style="-fx-text-fill: white;" text="Tutar (₺):" />
+            <TextField fx:id="txtAmount" promptText="Tutar giriniz" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label style="-fx-text-fill: white;" text="Ödeme Yöntemi:" />
+            <ComboBox fx:id="cmbPaymentMethod" promptText="Yöntem seç" />
+        </HBox>
+
+        <Button onAction="#handlePayment" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold;" text="Ödeme Yap" />
+
+        <Button fx:id="btnBack" onAction="#handleBack" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #ffffff; -fx-text-fill: black; -fx-font-weight: bold;" text="Geri" />
+
+    </VBox>
+</AnchorPane>

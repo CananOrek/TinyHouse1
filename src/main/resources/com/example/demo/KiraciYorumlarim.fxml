@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefWidth="700" prefHeight="500"
+            style="-fx-background-color: #2e4e5e;-fx-background-radius: 10"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo.KiraciYorumlarController">
+
+    <Label layoutX="20" layoutY="20" text="Yorumlarım"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+
+    <TableView fx:id="yorumTablosu" layoutX="20" layoutY="60" prefWidth="660" prefHeight="340">
+        <columns>
+            <TableColumn fx:id="colKiraci" text="Kiracı Adı" prefWidth="150" />
+            <TableColumn fx:id="colEv" text="Ev Adı" prefWidth="150" />
+            <TableColumn fx:id="colTarih" text="Tarih" prefWidth="120" />
+            <TableColumn fx:id="colIcerik" text="Yorum" prefWidth="240" />
+        </columns>
+    </TableView>
+
+    <HBox layoutX="20" layoutY="430" spacing="10">
+        <Button fx:id="btnSil" text="Yorumu Sil" onAction="#onSil"
+                style="-fx-background-color: #d9534f; -fx-text-fill: white;" />
+        <Button fx:id="btnGuncelle" text="Yorumu Güncelle" onAction="#onGuncelle"
+                style="-fx-background-color: #5bc0de; -fx-text-fill: white;" />
+    </HBox>
+</AnchorPane>
