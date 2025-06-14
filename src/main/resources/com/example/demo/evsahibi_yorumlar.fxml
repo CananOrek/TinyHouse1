@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.EvSahibiCommentsController"
-            prefWidth="600" prefHeight="400">
-    <children>
-        <TableView fx:id="commentTable" layoutX="20" layoutY="20" prefWidth="560" prefHeight="350">
+<AnchorPane prefHeight="500" prefWidth="700" style="-fx-background-color:#2e4e5e;-fx-background-radius: 10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EvSahibiCommentsController">
+
+    <Label layoutX="20" layoutY="20" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Yorumlarım" />
+
+    <TableView fx:id="commentTable" layoutX="20" layoutY="60" prefHeight="360" prefWidth="660">
             <columns>
-                <TableColumn fx:id="colHouse" text="Ev Adı" prefWidth="120"/>
-                <TableColumn fx:id="colTenant" text="Kiracı" prefWidth="120"/>
-                <TableColumn fx:id="colComment" text="Yorum" prefWidth="200"/>
-                <TableColumn fx:id="colRating" text="Puan" prefWidth="100"/>
-                <TableColumn fx:id="colReply" text="Cevap" prefWidth="150"/>
+                <TableColumn fx:id="colHouse" prefWidth="120" text="Ev Adı" />
+                <TableColumn fx:id="colTenant" prefWidth="120" text="Kiracı" />
+                <TableColumn fx:id="colComment" prefWidth="200" text="Yorum" />
+                <TableColumn fx:id="colRating" prefWidth="100" text="Puan" />
+                <TableColumn fx:id="colReply" prefWidth="150" text="Cevap" />
             </columns>
         </TableView>
-        <Button layoutX="20" layoutY="380" text="Yorumu Cevapla" onAction="#handleReply"/>
-    </children>
+        <Button layoutX="24.0" layoutY="442.0" onAction="#handleReply" style="-fx-background-color: #ffbbd7;" text="Yorumu Cevapla" />
+    <Button layoutX="600.0" layoutY="442.0" onAction="#handleBack" prefWidth="80" style="-fx-background-color: #ffffff;     -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
 </AnchorPane>
