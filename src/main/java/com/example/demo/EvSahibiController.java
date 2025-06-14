@@ -1,92 +1,113 @@
 package com.example.demo;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
-import java.sql.*;
-import java.time.LocalDate;
-
-public class EvSahibiOdemeController {
-
-    @FXML private TableView<Reservation> paymentTable;
-    @FXML private TableColumn<Reservation, String> colHouse;
-    @FXML private TableColumn<Reservation, String> colTenant;
-    @FXML private TableColumn<Reservation, Double> colAmount;
-    @FXML private TableColumn<Reservation, String> colStatus;
-    @FXML private TableColumn<Reservation, LocalDate> colPaymentDate;
 
 
-    private ObservableList<Reservation> paymentList = FXCollections.observableArrayList();
-    private final int OWNER_ID = LoginController.currentUserId;
+public class EvSahibiController {
 
     @FXML
-    public void initialize() {
-        colHouse.setCellValueFactory(new PropertyValueFactory<>("houseName"));
-        colTenant.setCellValueFactory(new PropertyValueFactory<>("tenantName"));
-        colAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("paymentStatus"));
-        colPaymentDate.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+    private Button yorumlarButonu;
+    @FXML
+    private Button rezervasyonButonu;
+    @FXML
+    private Button btnOdeme;
 
-        loadPayments();
-    }
 
-    private void loadPayments() {
-        paymentList.clear();
-        try (Connection conn = Database.getConnection()) {
-            String sql = "SELECT R.ReservationID, H.HouseName, U.FullName AS TenantName, " +
-                    "R.TotalAmount, R.PaymentStatus, R.PaymentDate " +
-                    "FROM Reservations R " +
-                    "JOIN Houses H ON R.HouseID = H.HouseID " +
-                    "JOIN Users U ON R.CustomerID = U.UserID " +
-                    "WHERE H.OwnerID = ? AND R.PaymentStatus = 'Ödendi'";
 
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, OWNER_ID);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Reservation r = new Reservation(
-                        rs.getInt("ReservationID"),
-                        rs.getString("HouseName"),
-                        rs.getString("TenantName"),
-                        rs.getDouble("TotalAmount"),
-                        rs.getString("PaymentStatus"),
-                        rs.getDate("PaymentDate").toLocalDate()
-                );
-                paymentList.add(r);
-            }
-            paymentTable.setItems(paymentList);
-
-        } catch (SQLException e) {
-            showAlert("Veri Hatası", e.getMessage());
+    @FXML
+    private void goToReservations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi_rezervasyonlar.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) rezervasyonButonu.getScene().getWindow(); // herhangi bir sahne elemanı yerine kullanılabilir
+            stage.setScene(scene);
+            stage.setTitle("Rezervasyonlar");
+        } catch (IOException e) {
+            // e.printStackTrace();
+            showAlert("Hata", "Ekran yüklenemedi: " + e.getMessage());
         }
     }
 
     private void showAlert(String title, String msg) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
     }
 
+
     @FXML
-    private void handleBack() {
+    private void goToComments() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) paymentTable.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi_yorumlar.fxml"));
+            Stage stage = (Stage) yorumlarButonu.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            showAlert("Hata", "Yorumlar ekranı yüklenemedi: " + e.getMessage());
         }
     }
+
+    @FXML
+    private Button btnRezervasyon;
+
+    @FXML
+    private void handleReservations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EvSahibiIlanlar.fxml"));
+            Stage stage = (Stage) btnRezervasyon.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            showAlert("Hata", "Rezervasyonlar ekranı açılamadı: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handlePayments() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi_odeme.fxml"));
+            Stage stage = (Stage) btnOdeme.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            showAlert("Hata", "Ödeme bilgileri ekranı açılamadı: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private Button gelirRaporuButton;
+
+    @FXML
+    private void gelirRaporunaGit() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi_gelir_raporu.fxml")); // <== burada dosya adı doğru olmalı
+            Stage stage = (Stage) gelirRaporuButton.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            showAlert("Ekran Hatası", "Gelir Raporu ekranı açılamadı: " + e.getMessage());
+        }
+    }
+    @FXML
+    private void handleLogout() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Çıkış");
+        alert.setHeaderText(null);
+        alert.setContentText("Çıkış yapılıyor...");
+        alert.showAndWait();
+
+
+        System.exit(0);
+    }
+
+
 }
