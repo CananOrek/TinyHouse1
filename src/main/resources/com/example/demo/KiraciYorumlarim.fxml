@@ -27,5 +27,10 @@
                 style="-fx-background-color: #d9534f; -fx-text-fill: white;" />
         <Button fx:id="btnGuncelle" text="Yorumu Güncelle" onAction="#onGuncelle"
                 style="-fx-background-color: #5bc0de; -fx-text-fill: white;" />
+
+        <Button fx:id="btnBack" onAction="#handleBack" prefHeight="26.0" prefWidth="58.0"
+                style="-fx-background-color: #ffffff; -fx-text-fill: black; -fx-font-weight: bold;"
+                text="Geri" />
+
     </HBox>
 </AnchorPane>
