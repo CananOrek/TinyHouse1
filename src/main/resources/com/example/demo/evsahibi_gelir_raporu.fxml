@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.EvSahibiGelirRaporuController"
-            prefWidth="700" prefHeight="400">
-    <children>
-        <TableView fx:id="gelirTablosu" layoutX="20" layoutY="20" prefWidth="660" prefHeight="320">
+<AnchorPane prefHeight="476.0" prefWidth="702.0" style="-fx-background-color: #2e4e5e; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EvSahibiGelirRaporuController">
+
+        <Label layoutX="20" layoutY="20" style="-fx-font-size: 20px;     -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Gelir Raporu" />
+
+        <TableView fx:id="gelirTablosu" layoutX="20.0" layoutY="59.0" prefHeight="320" prefWidth="660">
             <columns>
-                <TableColumn fx:id="colEvAdi" text="Ev Adı" prefWidth="200"/>
-                <TableColumn fx:id="colTutar" text="Tutar (₺)" prefWidth="150"/>
-                <TableColumn fx:id="colTarih" text="Tarih" prefWidth="200"/>
+                <TableColumn fx:id="colEvAdi" prefWidth="200" text="Ev Adı" />
+                <TableColumn fx:id="colTutar" prefWidth="150" text="Tutar (₺)" />
+                <TableColumn fx:id="colTarih" prefWidth="200" text="Tarih" />
             </columns>
         </TableView>
 
-        <Label fx:id="toplamGelirLabel" layoutX="500" layoutY="350" text="Toplam Gelir: 0 TL" />
-
-        <Button layoutX="20" layoutY="350" text="Geri Dön" onAction="#geriDon"/>
-    </children>
+        <Label fx:id="toplamGelirLabel" layoutX="20.0" layoutY="424.0" style="-fx-text-fill: #ffffff;-fx-font-weight: bold;" text="Toplam Gelir: 0 TL" />
+    <Button layoutX="600.0" layoutY="420.0" onAction="#geriDon" prefWidth="80" style="-fx-background-color: #ffffff;     -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
 </AnchorPane>
