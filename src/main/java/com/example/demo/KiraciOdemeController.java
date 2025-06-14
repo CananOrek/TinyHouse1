@@ -71,7 +71,7 @@ public class KiraciOdemeController {
     @FXML
     private void handleBack() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("evsahibi.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("kiraci.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) btnBack.getScene().getWindow();
             stage.setScene(new Scene(root));
