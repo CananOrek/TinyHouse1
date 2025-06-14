@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.EvSahibiOdemeController"
-            prefWidth="700" prefHeight="400">
+<AnchorPane prefHeight="476.0" prefWidth="702.0" style="-fx-background-color: #2e4e5e; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EvSahibiOdemeController">
 
-    <children>
-        <TableView fx:id="paymentTable" layoutX="20" layoutY="20" prefWidth="660" prefHeight="320">
+    <Label layoutX="20" layoutY="20" style="-fx-font-size: 20px;     -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Ödeme Geçmişim" />
+
+
+    <TableView fx:id="paymentTable" layoutX="20" layoutY="60" prefHeight="350" prefWidth="660">
             <columns>
-                <TableColumn fx:id="colHouse" text="Ev Adı" prefWidth="150"/>
-                <TableColumn fx:id="colTenant" text="Kiracı" prefWidth="150"/>
-                <TableColumn fx:id="colAmount" text="Tutar" prefWidth="100"/>
-                <TableColumn fx:id="colStatus" text="Durum" prefWidth="100"/>
-                <TableColumn fx:id="colPaymentDate" text="Tarih" prefWidth="150"/>
+                <TableColumn fx:id="colHouse" prefWidth="150" text="Ev Adı" />
+                <TableColumn fx:id="colTenant" prefWidth="150" text="Kiracı" />
+                <TableColumn fx:id="colAmount" prefWidth="100" text="Tutar" />
+                <TableColumn fx:id="colStatus" prefWidth="100" text="Durum" />
+                <TableColumn fx:id="colPaymentDate" prefWidth="150" text="Tarih" />
             </columns>
         </TableView>
-
-        <Button layoutX="20" layoutY="350" text="Geri Dön" onAction="#handleBack"/>
-    </children>
+    <Button layoutX="600.0" layoutY="442.0" onAction="#handleBack" prefWidth="80" style="-fx-background-color: #ffffff;
+    -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
 </AnchorPane>
