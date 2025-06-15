@@ -3,9 +3,13 @@ package com.example.demo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class AdminUserController {
@@ -123,6 +127,17 @@ public class AdminUserController {
 
         } catch (SQLException e) {
             showAlert("Veritabanı Hatası", e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleBack() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("admin.fxml"));
+            Stage stage = (Stage) userTable.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            showAlert("Hata", "Geri dönüş ekranı açılamadı: " + e.getMessage());
         }
     }
 
