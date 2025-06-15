@@ -30,6 +30,9 @@
                 style="-fx-background-color: #009565; -fx-text-fill: white;" />
         <Button text="Pasif Yap" fx:id="btnPasifYap" onAction="#handleDeactivateUser"
                 style="-fx-background-color: #f0ad4e; -fx-text-fill: white;" />
+        <Button layoutX="606.0" layoutY="456.0" onAction="#handleDeleteUser"
+                prefWidth="80" style="-fx-background-color: #5bc0de;
+     -fx-text-fill: #ffffff; -fx-font-weight: bold;" text="Sil" />
         <Button layoutX="606.0" layoutY="456.0" onAction="#handleBack"
                 prefWidth="80" style="-fx-background-color: #ffffff;
      -fx-text-fill: #2e4e5e; -fx-font-weight: bold;" text="Geri" />
